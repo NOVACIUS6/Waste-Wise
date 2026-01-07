@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Wise - Edukasi Sampah</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/css/educationStyle.css">
+    <link rel="stylesheet" href="style/css/auth.css">
+</head>
+<body>
+
+    <header class="header container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <a href="index.html" class="logo-link">♻️ Waste Wise</a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="action.html" class="nav-item">Action</a>
+                <a href="education.html" class="nav-item active">Education</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="auth.html" class="nav-item">Login</a>
+
+
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="education-hero container">
+            <h1>Dari Edukasi ke Aksi, Dari Sampah ke Manfaat.</h1>
+            <p class="subtitle">
+                Pelajari dasar-dasar pemilahan, proses daur ulang, dan dampak kecil yang bisa kita buat setiap hari.
+            </p>
+            <a href="#pemilahan" class="btn">Mulai Belajar</a>
+        </section>
+
+        <section id="pemilahan" class="sorting-guide-section">
+            <div class="container">
+                <h2 class="section-title">Panduan Pemilahan Sampah Praktis</h2>
+                <p class="section-description">Setiap sampah memiliki tempatnya sendiri. Ketahui cara memilah yang benar agar mudah didaur ulang.</p>
+
+                <div class="sorting-grid">
+                    
+                    <!-- 1. Sampah Organik -->
+                    <div class="category-card">
+                        <div class="card-header">
+                            <span class="card-icon icon-organik">🍃</span>
+                            <h3>Sampah Organik</h3>
+                        </div>
+                        <p class="card-description">
+                            Sampah yang berasal dari makhluk hidup dan dapat terurai secara alami
+                        </p>
+                        <div class="card-details">
+                            <p class="example-text">Contoh:</p>
+                            <div class="pills-container">
+                                <span class="pill">Sisa makanan</span>
+                                <span class="pill">Daun kering</span>
+                                <span class="pill">Kantong Teh</span>
+                                <span class="pill">Ampas Kopi</span>
+                            </div>
+                        </div>
+                        <a href="https://id.wikipedia.org/wiki/Sampah_organik" class="learn-more-link">Pelajari Lebih Lanjut →</a>
+                    </div>
+
+                    <!-- 2. Sampah Plastik -->
+                    <div class="category-card">
+                        <div class="card-header">
+                            <span class="card-icon icon-plastik">🟦</span>
+                            <h3>Sampah Plastik</h3>
+                        </div>
+                        <p class="card-description">
+                            Material sintetis yang membutuhkan waktu sangat lama untuk terurai
+                        </p>
+                        <div class="card-details">
+                            <p class="example-text">Contoh:</p>
+                            <div class="pills-container">
+                                <span class="pill">Botol minuman</span>
+                                <span class="pill">Kantong plastik</span>
+                                <span class="pill">Straw plastik</span>
+                                <span class="pill">Wadah makanan</span>
+                            </div>
+                        </div>
+                        <a href="https://id.wikipedia.org/wiki/Sampah_anorganik" class="learn-more-link">Pelajari Lebih Lanjut →</a>
+                    </div>
+
+                    <!-- 3. Sampah Kertas -->
+                    <div class="category-card">
+                        <div class="card-header">
+                            <span class="card-icon icon-kertas">🟨</span>
+                            <h3>Sampah Kertas</h3>
+                        </div>
+                        <p class="card-description">
+                            Material berbasis serat kayu yang dapat didaur ulang berkali-kali
+                        </p>
+                        <div class="card-details">
+                            <p class="example-text">Contoh:</p>
+                            <div class="pills-container">
+                                <span class="pill">Koran</span>
+                                <span class="pill">Kardus</span>
+                                <span class="pill">Kertas HVS</span>
+                                <span class="pill">Majalah</span>
+                            </div>
+                        </div>
+                        <a href="https://ejournal.upi.edu/index.php/index/index" class="learn-more-link">Pelajari Lebih Lanjut →</a>
+                    </div>
+
+                    <!-- 4. Sampah Kaca -->
+                    <div class="category-card">
+                        <div class="card-header">
+                            <span class="card-icon icon-kaca">🟪</span>
+                            <h3>Sampah Kaca</h3>
+                        </div>
+                        <p class="card-description">
+                            Material mineral yang dapat didaur ulang tanpa kehilangan kualitas
+                        </p>
+                        <div class="card-details">
+                            <p class="example-text">Contoh:</p>
+                            <div class="pills-container">
+                                <span class="pill">Botol Kaca</span>
+                                <span class="pill">Gelas bekas</span>
+                                <span class="pill">Toples kaca</span>
+                                <span class="pill">Pecahan Kaca</span>
+                            </div>
+                        </div>
+                        <a href="https://www.bisnisjogja.id/limbah-kaca-bernilai-ekonomi-sarana-edukasi-pengelolaan-sampah/" class="learn-more-link">Pelajari Lebih Lanjut →</a>
+                    </div>
+
+                    <!-- 5. Sampah Logam -->
+                    <div class="category-card">
+                        <div class="card-header">
+                            <span class="card-icon icon-logam">⚙️</span>
+                            <h3>Sampah Logam</h3>
+                        </div>
+                        <p class="card-description">
+                            Material logam yang memiliki nilai daur ulang tinggi
+                        </p>
+                        <div class="card-details">
+                            <p class="example-text">Contoh:</p>
+                            <div class="pills-container">
+                                <span class="pill">Kaleng minuman</span>
+                                <span class="pill">Aluminium foil</span>
+                                <span class="pill">Paku & baut</span>
+                                <span class="pill">Kawat besi</span>
+                            </div>
+                        </div>
+                        <a href="https://dynatech-int.com/id/mengenal-proses-daur-ulang-logam-dan-hasil-akhirnya/" class="learn-more-link">Pelajari Lebih Lanjut →</a>
+                    </div>
+
+                    <!-- 6. Limbah Elektronik (B3) -->
+                    <div class="category-card">
+                        <div class="card-header">
+                            <span class="card-icon icon-elektronik">🔴</span>
+                            <h3>Limbah Elektronik (E-Waste)</h3>
+                        </div>
+                        <p class="card-description">
+                            Peralatan elektronik yang mengandung zat berbahaya dan material berharga
+                        </p>
+                        <div class="card-details">
+                            <p class="example-text">Contoh:</p>
+                            <div class="pills-container">
+                                <span class="pill">HP bekas</span>
+                                <span class="pill">Laptop/Komputer</span>
+                                <span class="pill">Baterai</span>
+                                <span class="pill">Kabel elektronik</span>
+                            </div>
+                        </div>
+                        <a href="https://waste4change.com/blog/sampah-elektronik-pengertian-hingga-dampak-bagi-lingkungan/" class="learn-more-link">Pelajari Lebih Lanjut →</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="recycling-process-section container">
+            <h2 class="section-title">Memahami Daur Ulang</h2>
+
+            <div class="process-grid">
+                <div class="process-image-placeholder img-plastic">
+                    <img src="style/img/17.png" alt="">
+                </div>
+                <div class="process-content">
+                    <h3>1. Daur Ulang Plastik (PET & HDPE)</h3>
+                    <p>Botol plastik yang terkumpul dibersihkan, dicacah menjadi serpihan kecil, dilelehkan, dan dicetak menjadi serat kain atau biji plastik baru. Proses ini mengurangi ketergantungan pada minyak bumi.</p>
+                    <a href="https://www.youtube.com/watch?v=GLGcpseaQyc&pp=ygUgcHJvc2VzIGRhdXIgdWxhbmcgc2FtcGFoIHBsYXN0aWs%3D" class="btn-secondary">Lihat Video Proses</a>
+                </div>
+            </div>
+
+            <div class="process-grid reverse-layout">
+                <div class="process-content">
+                    <h3>2. Daur Ulang Kertas dan Karton</h3>
+                    <p>Kertas bekas dilarutkan dalam air untuk memisahkan serat selulosa dari tinta dan kotoran. Bubur kertas (pulp) yang bersih kemudian dicetak ulang menjadi kertas koran, karton, atau tisu baru.</p>
+                    <a href="https://pusakaindonesia.id/kiprah-dan-inspirasi/belajar-mendaur-ulang-kertas-belajar-merawat-ibu-bumi/" class="btn-secondary">Lihat Panduan Bergambar</a>
+                </div>
+                <div class="process-image-placeholder img-paper">
+                    <img src="style/img/16.png" alt="">
+                </div>
+            </div>
+            
+        </section>
+
+        <footer class="footer">
+            <div class="container footer-wrapper">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">♻️ Waste Wise</a>
+                    <p class="footer-tagline">Lingkungan Bersih Dimulai dari Aksi</p>
+                    <p class="footer-desc">Platform digital untuk mendorong pengelolaan sampah
+                        yang bertanggung jawab dan berkelanjutan.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <nav class="footer-nav">
+                        <a href="index.html">Home</a>
+                        <a href="action.html">Action</a>
+                        <a href="education.html">Education</a>
+                        <a href="about.html">About</a>
+                        <a href="auth.html">Login</a>
+                    </nav>
+                </div>
+
+            <div class="footer-col">
+                <h4>Afiliasi</h4>
+                <a href="https://itpln.ac.id/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="footer-link">
+                    Institut Teknologi PLN
+                </a>
+            </div>
+
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <p>📧 support@wastewise.id</p>
+                    <p>📸 Instagram: @wastewise.id</p>
+                    <p>💬 WhatsApp: 0895619214547</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Waste Wise. Bersama Menjaga Bumi.</p>
+            </div>
+        </footer>
+    </main>
+    <script src="js/auth.js"></script>
+</body>
+</html>

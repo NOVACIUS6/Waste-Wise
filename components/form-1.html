@@ -1,0 +1,43 @@
+<section class="shipping-form container">
+    <h2>📦 Form Pengiriman Sampah</h2>
+
+    <div class="stepper">
+        <div class="step active">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+    </div>
+
+    <h3>1️⃣ Pilah Sampah</h3>
+
+    <label>Jenis Sampah</label>
+    <select id="wasteType" required>
+        <option value="">Pilih jenis</option>
+        <option value="plastik">Plastik</option>
+        <option value="organik">Organik</option>
+        <option value="elektronik">Elektronik</option>
+        <option value="kertas">Kertas</option>
+        <option value="logam">Logam</option>
+    </select>
+
+    <label>Kondisi Sampah</label>
+    <select id="wasteCondition" required>
+        <option value="">Pilih kondisi</option>
+        <option value="bersih">Bersih & kering</option>
+        <option value="campur">Campur</option>
+        <option value="kotor">Kotor / basah</option>
+    </select>
+
+    <label>Perkiraan Berat (kg)</label>
+    <input type="number" id="wasteWeight" min="1" required>
+
+    <label>Catatan Tambahan (opsional)</label>
+    <textarea id="wasteNote" rows="3"
+        placeholder="Contoh: plastik botol minuman, sudah dipisah"></textarea>
+
+    <p class="hint">
+        💡 Sampah yang bersih akan mendapatkan poin lebih besar
+    </p>
+
+    <button class="btn" onclick="saveStep1()">Lanjut</button>
+</section>

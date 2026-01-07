@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Wise - Masuk / Daftar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style/css/base.css">
+    <link rel="stylesheet" href="style/css/auth.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-form-side">
+            <div class="form-wrapper">
+                <div class="brand-logo">
+                    <a href="index.html" style="text-decoration: none; font-size: 1.5rem;">♻️ Waste Wise</a>
+                </div>
+
+                <div id="login-form-content">
+                    <h1>Selamat Datang Kembali!</h1>
+                    <p class="subtitle">Ayo lanjutkan aksi nyatamu untuk bumi hari ini.</p>
+
+                    <div class="social-login">
+                        <button class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google"> Masuk dengan Google</button>
+                    </div>
+
+                    <div class="divider"><span>Atau gunakan email</span></div>
+
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Kata Sandi</label>
+                            <input type="password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn">Masuk</button>
+                    </form>
+                    <p class="switch-text">Belum punya akun? <a href="#" onclick="toggleAuth(event)">Daftar Sekarang</a></p>
+                </div>
+
+                <div id="register-form-content" style="display: none;">
+                    <h1>Mulai Aksi Nyatamu</h1>
+                    <p class="subtitle">Bergabung dengan komunitas penjaga bumi dan kumpulkan poin.</p>
+
+                    <form id="registerForm">
+                        <div class="input-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Kata Sandi</label>
+                            <input type="password" placeholder="Minimal 6 karakter" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Konfirmasi Kata Sandi</label>
+                            <input type="password" placeholder="Ulangi kata sandi" required>
+                        </div>
+                        <button type="submit" class="btn">Buat Akun</button>
+                    </form>
+                    <p class="switch-text">Sudah punya akun? <a href="#" onclick="toggleAuth(event)">Masuk di sini</a></p>
+                </div>
+            </div>
+        </div>
+            <div class="auth-image-side">
+                <img src="style/img/kaciw.jpg" alt="Lingkungan Hijau">
+        
+             <div class="overlay-content">
+                <h2>Aksi Nyata Dimulai dari Sini</h2>
+                <p>Masuk dan lanjutkan kontribusimu</p>
+        </div>
+</div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize auth system
+            window.initAuth();
+
+            // Setup Google login (demo)
+            const googleBtn = document.querySelector('.social-btn');
+            if (googleBtn) {
+                googleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.loginUser('user@gmail.com', 'password123');
+                });
+            }
+        });
+
+        function toggleAuth(e) {
+            e.preventDefault();
+            const loginContent = document.getElementById('login-form-content');
+            const registerContent = document.getElementById('register-form-content');
+            
+            if (loginContent.style.display === 'none') {
+                loginContent.style.display = 'block';
+                registerContent.style.display = 'none';
+            } else {
+                loginContent.style.display = 'none';
+                registerContent.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

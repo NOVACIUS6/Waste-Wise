@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Wise - Aksi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Stylesheet Anda -->
+    <link rel="stylesheet" href="style/css/base.css">
+    <link rel="stylesheet" href="style/css/map.css">
+    <link rel="stylesheet" href="style/css/delivery.css">
+    <link rel="stylesheet" href="style/css/payment.css">
+    <link rel="stylesheet" href="style/css/map-modal.css">
+    <link rel="stylesheet" href="style/css/auth.css">
+
+</head>
+<body>
+
+    <header class="header container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <a href="index.html" class="logo-link">♻️ Waste Wise</a>
+            </div>
+            <nav class="action-nav">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="action.html" class="nav-item active">Action</a>
+                <a href="education.html" class="nav-item">Education</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="auth.html" class="nav-item">Login</a>
+
+
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Kontainer untuk komponen formulir saja -->
+        <div id="form-container"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-wrapper">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">♻️ Waste Wise</a>
+                <p class="footer-tagline">Lingkungan Bersih Dimulai dari Aksi</p>
+                <p class="footer-desc">Platform digital untuk mendorong pengelolaan sampah
+                    yang bertanggung jawab dan berkelanjutan.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="action.html">Action</a>
+                    <a href="education.html">Education</a>
+                    <a href="about.html">About</a>
+                    <a href="auth.html">Login</a>
+                </nav>
+            </div>
+
+            <div class="footer-col">
+                <h4>Afiliasi</h4>
+                <a href="https://itpln.ac.id/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="footer-link">
+                    Institut Teknologi PLN
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Hubungi Kami</h4>
+                <p>📧 support@wastewise.id</p>
+                <p>📸 Instagram: @wastewise.id</p>
+                <p>💬 WhatsApp: 0895619214547</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Waste Wise. Bersama Menjaga Bumi.</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/map-modal.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/action.js"></script>
+</body>
+</html>

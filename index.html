@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Wise - Lingkungan Bersih</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+
+      <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="style/css/style.css">
+    <link rel="stylesheet" href="style/css/map.css">
+    <link rel="stylesheet" href="style/css/auth.css">
+
+</head>
+<body>
+
+    <header class="header container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <a href="index.html" class="logo-link">♻️ Waste Wise</a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="action.html" class="nav-item">Action</a>
+                <a href="education.html" class="nav-item">Education</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="auth.html" class="nav-item">Login</a>
+
+
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero container">
+        <div class="hero-slider-container">
+            <div class="hero-image-placeholder">
+                <img src="style/img/12.png" alt="Slide 1">
+                <img src="style/img/13.png" alt="Slide 2">
+                <img src="style/img/14.png" alt="Slide 3">
+                <img src="style/img/15.png" alt="Slide 4">
+            </div>
+            
+            <!-- Navigation Controls -->
+            <div class="slider-controls">
+                <button class="slider-arrow prev" onclick="previousSlide()">&#10094;</button>
+                <button class="slider-arrow next" onclick="nextSlide()">&#10095;</button>
+            </div>
+            
+            <!-- Indicator Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+                <span class="dot" onclick="goToSlide(3)"></span>
+            </div>
+        </div>
+        
+        <h1>Ubah Sampah Menjadi Aksi Nyata</h1>
+        <p>Waste Wise membantu Anda memilah, menemukan lokasi daur ulang terdekat, dan mengirim sampah secara mudah dan terjadwal.</p>
+    </section>
+
+    <script>
+    // Slider JS: manual controls, autoplay, pause on hover
+    (function(){
+        const sliderContainer = document.querySelector('.hero-slider-container');
+        const slides = Array.from(document.querySelectorAll('.hero-image-placeholder img'));
+        const dots = Array.from(document.querySelectorAll('.slider-dots .dot'));
+        const prevBtn = document.querySelector('.slider-arrow.prev');
+        const nextBtn = document.querySelector('.slider-arrow.next');
+
+        let current = 0;
+        let intervalId = null;
+        const delay = 7000; // ms per slide (7s per slide => 28s full cycle)
+
+        function showSlide(index){
+            slides.forEach((s,i)=>{
+                s.classList.toggle('active', i === index);
+            });
+            dots.forEach((d,i)=> d.classList.toggle('active', i === index));
+            current = index;
+        }
+
+        function nextSlide(){
+            showSlide((current + 1) % slides.length);
+        }
+        function previousSlide(){
+            showSlide((current - 1 + slides.length) % slides.length);
+        }
+
+        function startAuto(){
+            stopAuto();
+            intervalId = setInterval(nextSlide, delay);
+        }
+        function stopAuto(){
+            if(intervalId) { clearInterval(intervalId); intervalId = null; }
+        }
+
+        // Expose functions to inline onclick handlers
+        window.nextSlide = nextSlide;
+        window.previousSlide = previousSlide;
+        window.goToSlide = showSlide;
+
+        // Dots click
+        dots.forEach((d, i)=> d.addEventListener('click', ()=> showSlide(i)));
+
+        // prev/next
+        prevBtn.addEventListener('click', previousSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Pause on hover
+        sliderContainer.addEventListener('mouseenter', ()=> {
+            stopAuto();
+        });
+        sliderContainer.addEventListener('mouseleave', ()=> {
+            startAuto();
+        });
+
+        // Init
+        showSlide(0);
+        startAuto();
+    })();
+    </script>
+
+    <!-- MAP SECTION -->
+    <section class="location-section container">
+        <h2>Pilih Titik Drop-off Terdekat</h2>
+        <p>Temukan lokasi fasilitas daur ulang di sekitar Anda melalui peta interaktif di bawah ini.</p>
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">
+                <span>🗑️</span> Semua Lokasi
+            </button>
+            <button class="filter-btn" data-filter="plastik">
+                <span>🧴</span> Plastik
+            </button>
+            <button class="filter-btn" data-filter="elektronik">
+                <span>💻</span> Elektronik
+            </button>
+            <button class="filter-btn" data-filter="organik">
+                <span>🥬</span> Organik
+            </button>
+        </div>
+
+        <div class="view-all-button-wrapper">
+            <button class="btn-view-all" id="view-all-btn">Lihat Semua Lokasi <span>↓</span></button>
+            <button class="btn-view-all locate-btn" id="locate-btn">📍 Lokasi Saya</button>
+        </div>
+
+        <div class="location-content-grid">
+            <div id="map" style="width:100%;height:520px;border-radius:12px;">Sedang memuat peta...</div>
+            <div class="location-list">
+                <h4>Lokasi Tersedia</h4>
+                <div id="location-items">
+                    <p>Memuat lokasi...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works container">
+        <div class="how-it-works-header">
+                 <h2>Langkah Mudah Beraksi</h2>
+                <p>Ubah kepedulian Anda menjadi tindakan nyata dalam 4 langkah sederhana.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">🧼</div> <h3>Pilah Sampah</h3>
+                        <p>Pisahkan sampah Anda menjadi kategori plastik, kertas, atau elektronik sesuai panduan.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">📍</div>
+                        <h3>Cari Lokasi</h3>
+                        <p>Gunakan peta interaktif untuk menemukan titik drop-off atau fasilitas terdekat.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">📦</div>
+                        <h3>Kirim Sampah</h3>
+                        <p>Serahkan sampah Anda ke petugas atau antar langsung ke lokasi yang dipilih.</p>
+                    </div>
+
+                    <div class="step-card highlight">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">🪙</div>
+                        <h3>Dapatkan Poin</h3>
+                        <p>Klaim poin setelah pengiriman berhasil dan tukarkan dengan berbagai reward menarik.</p>
+                    </div>
+                </div>
+
+                <div class="cta-bottom">
+                    <a href="action.html" class="btn btn-primary">Mulai Aksi Sekarang</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== COMMUNITY IMPACT SECTION ===== -->
+        <section id="community-impact" class="community-impact-section container">
+            <h2>🌱 Dampak Anda</h2>
+            <p class="section-subtitle">Lihat kontribusi terakhir Anda dan dampak komunitas Waste Wise</p>
+
+            <div class="impact-highlights">
+                <!-- User's Last Contribution -->
+                <div class="highlight-card contribution-card">
+                    <div class="card-header">
+                        <h3>📊 Kontribusi Terakhir Anda</h3>
+                        <div class="login-prompt" id="loginPrompt" style="display: none;">
+                            <p><a href="auth.html">Login</a> untuk melihat kontribusi Anda</p>
+                        </div>
+                    </div>
+                    <div class="contribution-content" id="contributionContent">
+                        <p class="no-data">Belum ada kontribusi. <a href="action.html">Mulai sekarang!</a></p>
+                    </div>
+                </div>
+
+                <!-- Community Impact -->
+                <div class="highlight-card community-card">
+                    <div class="card-header">
+                        <h3>🌍 Dampak Komunitas WasteWise</h3>
+                    </div>
+                    <div class="community-stats">
+                        <div class="stat">
+                            <div class="stat-value" id="totalContributions">0</div>
+                            <div class="stat-label">Kontribusi</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="totalCO2Saved">0</div>
+                            <div class="stat-label">kg CO₂ Selamat</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="totalMembers">1,234</div>
+                            <div class="stat-label">Anggota Aktif</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     <section class="logos-section container">
+        <p>Dipercayai Oleh:</p>
+        <div class="logo-row">
+            <div class="logo-placeholder partner-logo">
+                <img src="style/img/logo/LOGO_IT_PLN.png" alt="IT PLN Logo">
+            </div>
+            <div class="logo-placeholder partner-logo">
+                <img src="style/img/logo/pln.png" alt="PLN Logo">
+            </div>
+            <div class="logo-placeholder partner-logo">
+                <img src="style/img/logo/unnamed.jpg" alt="Partner Logo">
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section container">
+        
+    <div class="feature-grid">
+        <div class="feature-content">
+            <h2>Menjadi Jembatan, Membangun Kesadaran</h2>
+            <p>
+                Waste Wise berperan sebagai penghubung antara masyarakat dan fasilitas daur ulang,
+                memastikan sampah tidak hanya dibuang, tetapi dikelola secara bertanggung jawab.
+            </p>
+        </div>
+        <div class="feature-image">
+            <img src="style/img/jembatan.jpg"
+                alt="Penghubung masyarakat dan fasilitas daur ulang"
+                class="feature-img">
+        </div>
+    </div>
+
+    <div class="feature-grid reverse-layout">
+        <div class="feature-image">
+            <img src="style/img/aksi.jpg"
+                alt="Aksi kecil pengelolaan sampah"
+                class="feature-img">
+        </div>
+        <div class="feature-content">
+            <h2>Mulai dari Aksi Kecil</h2>
+            <p>
+                Waste Wise tidak hanya mengedukasi, tetapi memfasilitasi aksi nyata.
+                Dari pemilahan sampah hingga pengiriman terjadwal.
+            </p>
+            <a href="education.html" class="btn">Pelajari Sekarang</a>
+        </div>
+    </div>
+
+    </section>
+
+    <section class="info-section">
+        <div class="container info-grid">
+            <div class="info-item">
+                <h3>♻️ Mudah Digunakan</h3>
+                <p>Daur ulang tanpa ribet, siapa pun bisa mulai.</p>
+                <p>Waste Wise dirancang agar proses pengelolaan sampah dapat dilakukan dalam beberapa langkah sederhana, mulai dari memilah hingga pengiriman ke fasilitas daur ulang.</p>
+            </div>
+            <div class="info-item">
+                <h3>📍 Lokasi Terdekat</h3>
+                <p>Fasilitas daur ulang kini lebih mudah dijangkau.</p>
+                <p>Temukan lokasi pengelolaan dan daur ulang sampah terdekat dari posisi Anda, lengkap dengan jenis sampah yang diterima dan layanan yang tersedia.</p>
+            </div>
+            <div class="info-item">
+                <h3>🌱 Dampak Nyata</h3>
+                <p>Daur ulang tanpa ribet, siapa pun bisa mulai.</p>
+                <p>Setiap aktivitas daur ulang yang Anda lakukan tercatat sebagai kontribusi nyata untuk lingkungan yang lebih bersih dan berkelanjutan.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-wrapper">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">♻️ Waste Wise</a>
+                <p class="footer-tagline">Lingkungan Bersih Dimulai dari Aksi</p>
+                <p class="footer-desc">Platform digital untuk mendorong pengelolaan sampah
+                    yang bertanggung jawab dan berkelanjutan.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="action.html">Action</a>
+                    <a href="education.html">Education</a>
+                    <a href="about.html">About</a>
+                    <a href="auth.html">Login</a>
+                </nav>
+            </div>
+
+            <div class="footer-col">
+                <h4>Afiliasi</h4>
+                <a href="https://itpln.ac.id/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="footer-link">
+                    Institut Teknologi PLN
+                </a>
+            </div>
+
+
+            <div class="footer-col">
+                <h4>Hubungi Kami</h4>
+                <p>📧 support@wastewise.id</p>
+                <p>📸 Instagram: @wastewise.id</p>
+                <p>💬 WhatsApp: 0895619214547</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Waste Wise. Bersama Menjaga Bumi.</p>
+        </div>
+    </footer>
+       <!-- Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/community-impact.js"></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+/* --- RESET & GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent-green: #14a085;
+    --accent-green-dark: #118a73;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+h2, h3 {
+    font-family: 'Inter', sans-serif;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER / NAVIGASI --- */
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    min-width: 180px;
+}
+
+.logo-link {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--accent-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+.logo-link:hover {
+    color: var(--accent-green-dark);
+    transform: scale(1.05);
+}
+
+.main-nav, .action-nav {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #666;
+    transition: color 0.2s;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.nav-item:hover {
+    color: #1a1a1a;
+    background-color: #f5f5f5;
+}
+
+.nav-item.active {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+/* --- HERO SECTION --- */
+.education-hero {
+    text-align: center;
+    padding: 80px 0 60px 0;
+}
+
+.education-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+    font-weight: 900;
+    line-height: 1.2;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.education-hero .subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- SECTION CARA KERJA (HOW IT WORKS) --- */
+.how-it-works {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.how-it-works h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.how-it-works p {
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.step-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.step-item {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.step-icon-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #e6f9ed;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #38a169;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #38a169;
+}
+
+.step-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.step-item p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.step-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ddd;
+    margin-top: 40px;
+}
+
+/* --- FOOTER STYLES --- */
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 60px 0 30px 0;
+    margin-top: 100px;
+}
+
+.footer-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    align-items: start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 500;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-nav a {
+    font-size: 0.95rem;
+    color: #bbb;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-green);
+}
+
+.footer-socials {
+    text-align: right;
+    font-size: 0.95rem;
+    color: #bbb;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* --- RESPONSIVE for base styles --- */
+@media (max-width: 900px) {
+    .step-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .step-item {
+        flex-basis: auto;
+        padding-bottom: 20px;
+    }
+    .step-line {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    .footer-socials {
+        text-align: center;
+    }
+}
+
+/* === CARA KERJA MUDAH - ACTION PAGE === */
+/* --- ACTION STEPPER STYLE --- */
+.action-process {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    position: relative;
+}
+
+/* Garis penghubung antar langkah */
+.stepper-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #edf2f2;
+    z-index: 1;
+}
+
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    z-index: 2;
+}
+
+.step-counter {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #edf2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.step-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+/* State Aktif (Langkah yang sedang berjalan) */
+.stepper-item.active .step-counter {
+    background: var(--accent-green);
+    color: #fff;
+    border-color: var(--accent-green);
+    box-shadow: 0 4px 15px rgba(20, 160, 133, 0.25);
+}
+
+.stepper-item.active .step-name {
+    color: var(--accent-green);
+}
+
+/* Konten Utama di Bawah Stepper */
+
+
+.placeholder-content {
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .step-name {
+        font-size: 0.8rem;
+    }
+    .stepper-wrapper {
+        gap: 10px;
+    }
+}
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .how-steps {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .how-line {
+    display: none;
+  }
+}
+
+/* Tambahkan ini untuk memberi penekanan pada langkah aktif */
+.stepper-item.active .step-counter {
+    background: var(--accent-green);
+    color: white;
+    transform: scale(1.2); /* Membuat langkah aktif sedikit lebih besar */
+    box-shadow: 0 0 0 6px rgba(20, 160, 133, 0.2); /* Efek ring di luar nomor */
+}
+
+/* Pastikan garis penghubung memiliki kontras yang cukup */
+.stepper-wrapper::before {
+    background: #e0e7e7; 
+}

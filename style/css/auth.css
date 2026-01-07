@@ -1,0 +1,434 @@
+/* style/css/auth.css - VERSI RESTORED & BERWARNA */
+:root {
+    --primary-green: #14a085; /* Hijau Waste Wise */
+    --text-dark: #1a1a1a;
+    --text-grey: #666666;
+    --border-color: #e0e0e0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* --- SISI KIRI: FORM --- */
+.auth-form-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8%; /* Padding standar */
+    background: white;
+}
+
+.form-wrapper {
+    max-width: 420px; /* Sedikit lebih lebar */
+    width: 100%;
+    margin: 0 auto;
+}
+
+.brand-logo {
+    margin-bottom: 3rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--text-grey);
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+}
+
+/* Social Login */
+.social-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px; /* Sudut tegas 8px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.social-btn img {
+    width: 20px; /* Ukuran tetap untuk logo */
+    height: 20px;
+}
+
+.social-btn:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px; background: #e0e0e0;
+}
+
+.divider span {
+    background: white;
+    padding: 0 15px;
+    color: #888;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Sudut tegas */
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+}
+
+/* Tombol Utama (Kembali ke gaya yang lebih tegas) */
+.btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 8px; /* KEMBALI KE SUDUT 8PX (TIDAK OVAL) */
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background: #118a73;
+}
+
+.switch-text {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+}
+
+.switch-text a {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* --- SISI KANAN: GAMBAR --- */
+.auth-image-side {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gambar Penuh Warna */
+.auth-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Filter grayscale DIHAPUS agar berwarna */
+}
+
+.overlay-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* Gradient agar teks terbaca */
+    color: white;
+}
+
+.overlay-content h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.overlay-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* --- AUTH SYSTEM STYLES --- */
+
+/* Auth Alert */
+.auth-alert {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    z-index: 2000;
+    animation: slideInRight 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.auth-alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.auth-alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.alert-message {
+    font-size: 0.95rem;
+}
+
+/* User Info in Nav */
+.user-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.user-info:hover {
+    color: #14a085;
+    background-color: #f0f8f6;
+}
+
+.user-info small {
+    font-size: 0.75rem;
+    color: #14a085;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+@media (max-width: 768px) {
+    .user-info {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+    
+    .user-info small {
+        font-size: 0.65rem;
+    }
+}
+
+/* User Profile Modal */
+.user-profile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.user-profile-content {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 0;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-profile-content .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-profile-content .close-btn:hover {
+    color: #333;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, #14a085 0%, #118a73 100%);
+    color: #fff;
+    padding: 25px;
+    border-radius: 16px 16px 0 0;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.profile-info {
+    padding: 25px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row span {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.info-row strong {
+    color: #1a1a1a;
+    font-weight: 600;
+    text-align: right;
+}
+
+.profile-actions {
+    padding: 20px 25px;
+    display: flex;
+    gap: 12px;
+}
+
+.logout-btn {
+    flex: 1;
+    padding: 12px;
+    background-color: #f5f5f5;
+    color: #666;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-alert {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+    }
+
+    .user-profile-content {
+        max-width: 100%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .auth-image-side { display: none; }
+}

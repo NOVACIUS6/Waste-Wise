@@ -1,0 +1,340 @@
+/* --- MAP MODAL STYLES --- */
+
+/* Custom Marker Styles */
+.custom-marker {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.custom-marker:hover {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.map-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 999;
+    padding-top: 20px;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.map-modal-content {
+    background-color: #fff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+    overflow: hidden;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.map-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fafafa;
+}
+
+.map-modal-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.map-modal-close {
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-modal-close:hover {
+    color: #333;
+}
+
+.map-modal-body {
+    padding: 25px 30px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Filter Buttons */
+.map-filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.map-filter-btn {
+    padding: 10px 16px;
+    border: 2px solid #e0e0e0;
+    background-color: #fff;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-filter-btn:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+.map-filter-btn.active {
+    background-color: var(--accent-green);
+    color: #fff;
+    border-color: var(--accent-green);
+}
+
+/* Map Container in Modal */
+#mapModalContainer {
+    background-color: #e8f5f1;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Location List in Modal */
+.map-location-list {
+    background-color: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.map-location-list h3 {
+    font-size: 1.1rem;
+    margin: 0 0 15px 0;
+    color: #1a1a1a;
+}
+
+.location-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.location-item-modal {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #e8f0ed;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.location-item-modal:hover {
+    border-color: var(--accent-green);
+    background-color: #f9fdfb;
+    transform: translateX(4px);
+}
+
+.location-item-modal.selected {
+    border-color: var(--accent-green);
+    background-color: #e8f5f1;
+}
+
+.location-item-modal strong {
+    display: block;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.location-item-modal .location-address {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.location-item-modal .location-type {
+    font-size: 0.8rem;
+    color: var(--accent-green);
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.loading-text {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+.map-modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Location Selection Box in Form */
+.location-selection-box {
+    background-color: #f9fdfb;
+    border: 2px solid #e8f0ed;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.location-status {
+    text-align: center;
+    padding: 15px;
+}
+
+.location-status p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.btn-select-location {
+    padding: 12px 24px;
+    background-color: var(--accent-green);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-select-location:hover {
+    background-color: var(--accent-green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(20, 160, 133, 0.3);
+}
+
+.selected-location-display {
+    animation: fadeIn 0.3s ease;
+}
+
+.location-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid var(--accent-green);
+    border-radius: 12px;
+}
+
+.location-card strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.location-card .address-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.location-card .distance-text {
+    color: var(--accent-green);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.btn-change-location {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: var(--accent-green);
+    border: 2px solid var(--accent-green);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-change-location:hover {
+    background-color: var(--accent-green);
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .map-modal {
+        padding-top: 0;
+    }
+
+    .map-modal-content {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .map-modal-header {
+        padding: 20px;
+    }
+
+    .map-modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .map-modal-body {
+        padding: 20px;
+        max-height: calc(100vh - 120px);
+    }
+
+    #mapModalContainer {
+        height: 350px !important;
+    }
+
+    .map-filter-container {
+        gap: 8px;
+    }
+
+    .map-filter-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .location-items {
+        max-height: 200px;
+    }
+
+    .map-modal-footer {
+        padding: 15px 20px;
+    }
+}

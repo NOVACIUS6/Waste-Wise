@@ -1,0 +1,24 @@
+<section class="shipping-form container">
+    <div class="stepper">
+        <div class="step done">1</div>
+        <div class="step active">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+    </div>
+
+    <h3>2️⃣ Pilih Lokasi Daur Ulang</h3>
+
+    <p id="selectedLocation">Belum memilih lokasi</p>
+
+    <!-- nanti bisa diganti peta -->
+    <button class="btn" onclick="selectLocation('TPS Hijau', 'Jl. Merdeka')">
+        Pilih TPS Hijau
+    </button>
+
+    <div class="nav-btn">
+        <a href="form-step-1.html" class="btn btn-secondary">Kembali</a>
+        <button class="btn" onclick="goStep3()">Lanjut</button>
+    </div>
+</section>
+
+<script src="form.js"></script>

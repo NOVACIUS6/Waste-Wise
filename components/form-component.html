@@ -1,0 +1,188 @@
+<section class="shipping-form container">
+    <h2>📦 Form Pengiriman Sampah</h2>
+
+    <div class="stepper">
+        <div class="step active">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+    </div>
+
+    <form id="wasteForm">
+
+        <!-- ================= STEP 1 ================= -->
+        <div class="form-step active">
+            <h3>1️⃣ Pilah Sampah</h3>
+
+            <label>Jenis Sampah</label>
+            <select id="wasteType" required>
+                <option value="">Pilih jenis</option>
+                <option value="plastik">Plastik</option>
+                <option value="organik">Organik</option>
+                <option value="elektronik">Elektronik</option>
+                <option value="kertas">Kertas</option>
+                <option value="logam">Logam</option>
+            </select>
+
+            <label>Kondisi Sampah</label>
+            <select id="wasteCondition" required>
+                <option value="">Pilih kondisi</option>
+                <option value="bersih">Bersih & kering</option>
+                <option value="campur">Campur</option>
+                <option value="kotor">Kotor / basah</option>
+            </select>
+
+            <label>Perkiraan Berat (kg)</label>
+            <input type="number" id="wasteWeight" min="1" required>
+
+            <label>Catatan Tambahan (opsional)</label>
+            <textarea id="wasteNote" rows="3"
+                placeholder="Contoh: botol plastik air mineral, sudah dicuci"></textarea>
+
+            <p class="hint">
+                💡 Sampah bersih & terpilah akan mendapatkan poin lebih besar
+            </p>
+
+            <button type="button" class="btn next-btn">Lanjut</button>
+        </div>
+
+        <!-- ================= STEP 2 ================= -->
+        <div class="form-step">
+            <h3>2️⃣ Pilih Lokasi & Penjemputan</h3>
+
+            <label>Alamat Penjemputan</label>
+            <textarea id="pickupAddress" rows="3" placeholder="Contoh: Jl. Mawar No.12, RT 03 RW 05" required></textarea>
+
+            <label>Jenis Layanan</label>
+            <select id="pickupType">
+                <option value="pickup">Dijemput Petugas</option>
+                <option value="dropoff">Antar Mandiri</option>
+            </select>
+
+            <!-- Lokasi Selection Box -->
+            <label>📍 Lokasi Daur Ulang</label>
+            <div class="location-selection-box">
+                <div id="locationStatusBox" class="location-status">
+                    <p id="locationStatusText">Belum memilih lokasi</p>
+                    <button type="button" class="btn-select-location" id="openMapModalBtn">
+                        📍 Pilih Lokasi
+                    </button>
+                </div>
+
+                <div id="selectedLocationBox" class="selected-location-display" style="display:none;">
+                    <div class="location-card">
+                        <p><strong id="selectedLocationName"></strong></p>
+                        <p id="selectedLocationAddress" class="address-text"></p>
+                        <p id="distanceInfo" class="distance-text"></p>
+                        <button type="button" class="btn-change-location" id="changeLocationBtn">
+                            ✏️ Ubah Lokasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn next-btn">Lanjut</button>
+            <button type="button" class="btn btn-secondary prev-btn">Kembali</button>
+        </div>
+
+        <!-- ================= STEP 3 ================= -->
+        <div class="form-step">
+            <h3>3️⃣ Pembayaran & Konfirmasi</h3>
+
+            <div class="summary-box">
+                <p><strong>Jenis Sampah:</strong> <span id="summaryType">-</span></p>
+                <p><strong>Kondisi:</strong> <span id="summaryCondition">-</span></p>
+                <p><strong>Berat:</strong> <span id="summaryWeight">-</span> kg</p>
+                <p><strong>Lokasi Daur Ulang:</strong> <span id="summaryLocation">-</span></p>
+                <p><strong>Alamat Jemput:</strong> <span id="summaryAddress">-</span></p>
+                <hr>
+                <p><strong>Estimasi Biaya:</strong></p>
+                <p class="price">💰 <span id="summaryCost">Rp -</span></p>
+            </div>
+
+            <label>Metode Pembayaran</label>
+            <div class="payment-methods">
+                <div class="payment-method-group">
+                    <label>
+                        <input type="radio" name="paymentMethod" value="mock" checked>
+                        <span>💳 Demo Payment (Testing)</span>
+                    </label>
+                </div>
+                <div class="payment-method-group">
+                    <label>
+                        <input type="radio" name="paymentMethod" value="ewallet">
+                        <span>📱 E-Wallet (Dana, GCash, OVO)</span>
+                    </label>
+                </div>
+                <div class="payment-method-group">
+                    <label>
+                        <input type="radio" name="paymentMethod" value="transfer">
+                        <span>🏦 Transfer Bank</span>
+                    </label>
+                </div>
+                <div class="payment-method-group">
+                    <label>
+                        <input type="radio" name="paymentMethod" value="creditcard">
+                        <span>💳 Kartu Kredit (Fee 2.5%)</span>
+                    </label>
+                </div>
+                <div class="payment-method-group">
+                    <label>
+                        <input type="radio" name="paymentMethod" value="virtual">
+                        <span>🏧 Virtual Account</span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="button" class="btn" id="process-payment-btn">
+                Konfirmasi & Bayar
+            </button>
+            <button type="button" class="btn btn-secondary prev-btn">
+                Kembali
+            </button>
+        </div>
+
+        <!-- ================= STEP 4 ================= -->
+        <div class="form-step">
+            <div class="success-container">
+                <div class="success-icon">✅</div>
+                <h3>Terima Kasih!</h3>
+                <p class="success-subtitle">Sampah Anda telah berhasil dikumpulkan dan diproses untuk didaur ulang.</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card points-card">
+                        <div class="impact-emoji">🎉</div>
+                        <div class="impact-label">Poin Diperoleh</div>
+                        <div class="impact-value" id="finalPoints">0</div>
+                        <div class="impact-subtext">untuk akun Anda</div>
+                    </div>
+
+                    <div class="impact-card co2-card">
+                        <div class="impact-emoji">🌍</div>
+                        <div class="impact-label">Dampak CO₂</div>
+                        <div class="impact-value" id="impactCO2">0</div>
+                        <div class="impact-subtext">kg CO₂ terselamatkan</div>
+                    </div>
+                </div>
+
+                <label>Beri Penilaian Layanan (opsional)</label>
+                <select id="rating">
+                    <option value="">Pilih Rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Sangat Baik</option>
+                    <option value="4">⭐⭐⭐⭐ Baik</option>
+                    <option value="3">⭐⭐⭐ Cukup</option>
+                    <option value="2">⭐⭐ Kurang</option>
+                    <option value="1">⭐ Buruk</option>
+                </select>
+
+                <label>Ulasan (opsional)</label>
+                <textarea rows="3"
+                    placeholder="Ceritakan pengalaman Anda menggunakan Waste Wise"></textarea>
+
+                <button type="button" class="btn btn-primary" onclick="window.completeForm?.()">Selesai</button>
+                <button type="button" class="btn btn-secondary" onclick="window.goToHome?.()">Lihat Dampak di Beranda</button>
+            </div>
+        </div>
+
+    </form>
+</section>

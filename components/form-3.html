@@ -1,0 +1,31 @@
+<section class="shipping-form container">
+    <div class="stepper">
+        <div class="step done">1</div>
+        <div class="step done">2</div>
+        <div class="step active">3</div>
+        <div class="step">4</div>
+    </div>
+
+    <h3>3️⃣ Pembayaran & Konfirmasi</h3>
+
+    <div class="summary-box">
+        <p>Jenis: <span id="summaryType"></span></p>
+        <p>Berat: <span id="summaryWeight"></span> kg</p>
+        <p>Lokasi: <span id="summaryLocation"></span></p>
+    </div>
+
+    <label>Metode Pembayaran</label>
+    <select id="paymentMethod">
+        <option value="">Pilih metode</option>
+        <option value="ewallet">E-Wallet</option>
+        <option value="transfer">Transfer</option>
+        <option value="cod">COD</option>
+    </select>
+
+    <div class="nav-btn">
+        <a href="form-step-2.html" class="btn btn-secondary">Kembali</a>
+        <button class="btn" onclick="processPayment()">Bayar</button>
+    </div>
+</section>
+
+<script src="form.js"></script>
